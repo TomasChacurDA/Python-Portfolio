@@ -27,7 +27,7 @@ def leer_camion(nombre_archivo):
     return(camion)
 
 
-camion = leer_camion('../Data/camion.csv')
+camion = leer_camion('Data/camion.csv')
 
 
 #------------------------------------------------------------------------------
@@ -71,8 +71,8 @@ def balance_del_camion(camion, precios):
     
     
     
-archivo_camion = '../Data/camion.csv'
-archivo_precios = '../Data/precios.csv'
+archivo_camion = 'Data/camion.csv'
+archivo_precios = 'Data/precios.csv'
 
 camion = leer_camion(archivo_camion)
 precio = leer_precios(archivo_precios)
@@ -82,7 +82,7 @@ balance_del_camion(camion, precio)
 
 
 
-balance = balance_negocio(archivo_camion, archivo_precios)
+'''balance = balance_negocio(archivo_camion, archivo_precios)
 
 print("Costo del camión:", costo_camion(archivo_camion))
 print("Ingresos por ventas:", ventas_negocio(archivo_camion, archivo_precios))
@@ -90,7 +90,7 @@ print("Balance:", balance)
 if balance > 0:
     print("¡Hubo ganancia!")
 else:
-    print("Hubo pérdida.")
+    print("Hubo pérdida.")'''
 
 #       
         
