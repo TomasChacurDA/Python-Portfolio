@@ -4,6 +4,8 @@ Created on Wed Apr 10 11:29:40 2024
 
 @author: Tomas
 """
+
+# Ejercicio 4.4
 import csv
        
 
@@ -24,3 +26,4 @@ def costo_camion(nombre_archivo):
     return costo_total
     
 print(costo_camion('Data/camion.csv'))
+print(costo_camion('Data/missing.csv'))
