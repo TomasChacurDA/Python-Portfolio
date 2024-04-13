@@ -1,13 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr  3 17:26:12 2024
-
-@author: Tomas
-"""
 import csv
 from costo_camion import costo_camion
 from collections  import Counter
-#------------------------------------------------------------------------------
+#------------------------------------------------------ Ejercicio 4.8: Recolectar datos ------------------------
 
 def leer_camion(nombre_archivo):
     camion = []
@@ -52,6 +46,9 @@ def leer_precios(nombre_archivo3):
         return d # Esta línea debe estar fuera del bloque 'with' para que devuelva el diccionario completo
 
 
+
+
+
  
 def balance_del_camion(camion, precios):
     costo_total = 0
@@ -65,47 +62,26 @@ def balance_del_camion(camion, precios):
             
         # Esto atrapa errores en los int() y float() de arriba.
         except ValueError:
-            print(f'Fila {n_fila}: No pude interpretar: {fila}')
+            print(f'Fila {n_fila}: No pude interpretar: {nombre_fruta}')
     balance_total = ventas - costo_total 
     print(balance_total)        
     
-    
-    
+
 archivo_camion = 'Data/camion.csv'
 archivo_precios = 'Data/precios.csv'
 
 camion = leer_camion(archivo_camion)
 precio = leer_precios(archivo_precios)
+print(f'Balance del camion {balance_del_camion(camion, precio)}')
 
 
-balance_del_camion(camion, precio)
-
-  
-                                                        # De aca para abajo 4.6
-
-tendencias = Counter()
-
-for s in camion:
-    tendencias[s['nombre']] += s['cajon']
-
-print(tendencias.most_common(3))
 
 
-# Cargamos los datos de otro camion
+def hacer_informe(camion, precio):
+    for element in (camion, precio):
+        list(zip(camion, precio))
+    
+print(hacer_informe(camion, precio))
 
-camion2 = leer_camion('Data/camion2.csv')
-tendencias2 = Counter()
 
-for element in camion2:
-    tendencias2[element['nombre']] += element['cajon']
 
-print(tendencias2)
-
-# Combinamos las tendencias
-
-tendencias_combinadas = tendencias + tendencias2   
-print(tendencias_combinadas)       
-
-                
-
-        
