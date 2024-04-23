@@ -13,7 +13,7 @@
 # Si no la usamos en un bucle for para cargar una linea especifica que queramos quitar
 # Va a quitar la linea en la posicion 0
 
-f1 = open('../Data/camion.csv', 'rt')
+f1 = open('Data/camion.csv', 'rt')
 # Cargamos el archivo en una nueva variable que imprime la primera linea.
 headers = next(f1)
 # Usamos 'headers' en la consola para ver el resultado.
@@ -25,7 +25,7 @@ for line in f1:
 #%%        
                             # Ejercicio 2.2 Lectura de un archivo de datos
 
-with open('../Data/camion.csv', 'rt') as f3:
+with open('Data/camion.csv', 'rt') as f3:
     # Saltamos la primer linea del archivo
     headers = next(f3)
     precio_total  = 0
@@ -40,7 +40,7 @@ with open('../Data/camion.csv', 'rt') as f3:
                             # Ejercicio 2.3 Precio de la naranja
                             
 
-with open('../Data/precios.csv', 'rt') as f4:
+with open('Data/precios.csv', 'rt') as f4:
     for linea in f4:
         # Quitamos los espacios y Separamos en listas y elementos.
         filas = linea.strip().split(',')
@@ -59,7 +59,7 @@ with open('../Data/precios.csv', 'rt') as f4:
 # Para leer archivos comprimidos podemos usar la siguiente libreria
 import gzip
 # Probar en consola
-with gzip.open('../Data/camion.csv.gz', 'rt') as f:
+with gzip.open('Data/camion.csv.gz', 'rt') as f:
     for line in f:
         print(line, end = '')
 #%%
@@ -122,14 +122,14 @@ def costo_camion(nombre_archivo):
         # Le ponemos return para que devuelva el valor
         return precio_total
 # Creamos una variable para poder llamar al archivo y que haga la cuenta con la funcion
-costo = costo_camion('../Data/camion.csv')
+costo = costo_camion('Data/camion.csv')
 print('Costo total:', costo)
  
 #%%       
                                         # Ejercicio 2.7: Buscar precios
                                         
 def buscar_precio(fruta):
-    with open('../Data/precios.csv', 'rt') as f4:
+    with open('Data/precios.csv', 'rt') as f4:
         for linea in f4:
             # Quitamos los espacios y Separamos en listas y elementos.
             filas = linea.strip().split(',')
@@ -148,7 +148,7 @@ def buscar_precio(fruta):
 #%%
     
 def buscar_fruta(fruta2):
-    with open('../Data/precios.csv', 'rt') as f5:
+    with open('Data/precios.csv', 'rt') as f5:
         for linea2 in f5:
             filas2 = linea2.split(',')
             if filas2 == ['']:
@@ -217,7 +217,7 @@ def costo_camion2(nombre_archivo):
         # Le ponemos return para que devuelva el valor
         return precio_total
 # Creamos una variable para poder llamar al archivo y que haga la cuenta con la funcion
-costo = costo_camion2('../Data/missing.csv')
+costo = costo_camion2('Data/missing.csv')
 print('Costo total:', costo)
     
 #%%        
@@ -242,7 +242,7 @@ def costo_camion3(nombre_archivo):
         # Le ponemos return para que devuelva el valor
         return precio_total
 # Creamos una variable para poder llamar al archivo y que haga la cuenta con la funcion
-costo = costo_camion3('../Data/camion.csv')
+costo = costo_camion3('Data/camion.csv')
 print('Costo total:', costo)        
 
 #%% 

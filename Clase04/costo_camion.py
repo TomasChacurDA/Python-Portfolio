@@ -14,6 +14,7 @@ def costo_camion(nombre_archivo):
         filas = csv.reader(f)
         encabezados = next(filas)
         costo_total = 0
+        
         for n_fila, fila in enumerate(filas, start=1):
             record = dict(zip(encabezados, fila))
             try:
@@ -24,6 +25,5 @@ def costo_camion(nombre_archivo):
             except ValueError:
                 print(f'Fila {n_fila}: No pude interpretar: {fila}')
     return costo_total
-    
-print(costo_camion('Data/camion.csv'))
-print(costo_camion('Data/missing.csv'))
+
+      

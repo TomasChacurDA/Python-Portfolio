@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr  3 17:26:12 2024
-
-@author: Tomas
-"""
 import csv
-from costo_camion import costo_camion
-from collections  import Counter
-#------------------------------------------------------------------------------
+
+
 
 def leer_camion(nombre_archivo):
     camion = []
@@ -28,7 +21,7 @@ def leer_camion(nombre_archivo):
     return(camion)
 
 
-camion = leer_camion('Data/camion.csv')
+camion = leer_camion('../Data/camion.csv')
 
 
 
@@ -52,59 +45,38 @@ def leer_precios(nombre_archivo3):
         return d # Esta línea debe estar fuera del bloque 'with' para que devuelva el diccionario completo
 
 
- 
-def balance_del_camion(camion, precios):
+
+
+archivo_camion = '../Data/camion.csv'
+archivo_precios = '../sData/precios.csv'
+
+camion = leer_camion(archivo_camion)
+precio = leer_precios(archivo_precios)
+
+def balance_del_camion(camion, precio):
     costo_total = 0
     ventas = 0 
     for n_fila, diccionario in enumerate(camion, start=1):
         try:
             costo_total += diccionario['cajones'] * diccionario['precio']
             nombre_fruta = diccionario['nombre']
-            precio_fruta = precios[nombre_fruta]
+            precio_fruta = precio[nombre_fruta]
             ventas += diccionario['cajones'] * precio_fruta
-            
+            balance_total = ventas - costo_total 
         # Esto atrapa errores en los int() y float() de arriba.
         except ValueError:
-            print(f'Fila {n_fila}: No pude interpretar: {fila}')
-    balance_total = ventas - costo_total 
-    print(balance_total)        
+            print(f'Fila {n_fila}: No pude interpretar: {diccionario}')
+            
+    return balance_total     
     
     
     
-archivo_camion = 'Data/camion.csv'
-archivo_precios = 'Data/precios.csv'
-
-camion = leer_camion(archivo_camion)
-precio = leer_precios(archivo_precios)
 
 
-balance_del_camion(camion, precio)
+
+
 
   
-                                                        # De aca para abajo 4.6
-
-tendencias = Counter()
-
-for s in camion:
-    tendencias[s['nombre']] += s['cajon']
-
-print(tendencias.most_common(3))
-
-
-# Cargamos los datos de otro camion
-
-camion2 = leer_camion('Data/camion2.csv')
-tendencias2 = Counter()
-
-for element in camion2:
-    tendencias2[element['nombre']] += element['cajon']
-
-print(tendencias2)
-
-# Combinamos las tendencias
-
-tendencias_combinadas = tendencias + tendencias2   
-print(tendencias_combinadas)       
 
                 
 

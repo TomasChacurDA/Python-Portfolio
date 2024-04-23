@@ -46,7 +46,7 @@ precios = {
 
 precios3 = {}  # Empezamos con un diccionario vacío
 
-with open('../Data/precios.csv', 'rt') as f:
+with open('Data/precios.csv', 'rt') as f:
     for line in f:
         row = line.split(',')
         precios3[row[0]] = float(row[1])
@@ -101,7 +101,7 @@ def leer_camion(nombre_archivo):
             camion.append(lote)
     return camion
 
-camion = leer_camion('../Data/camion.csv')
+camion = leer_camion('Data/camion.csv')
 
 
                                 # Ejercicio 3.2: Lista de diccionarios
@@ -123,7 +123,7 @@ def leer_camion2(nombre_archivo2):
             camion2.append(lote)
     return camion2
 
-camion = leer_camion('../Data/camion.csv')
+camion = leer_camion('Data/camion.csv')
 
 # 'camion' en consola nos devuelva la lista 
 
@@ -154,7 +154,6 @@ def leer_precios(nombre_archivo3):
         return d # Esta línea debe estar fuera del bloque 'with' para que devuelva el diccionario completo
 
 
-nombre_archivo = '../Data/precios.csv'
+nombre_archivo = 'Data/precios.csv'
 diccionario_precios = leer_precios(nombre_archivo)
 print(diccionario_precios)
-

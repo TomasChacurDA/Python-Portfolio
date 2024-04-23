@@ -2,7 +2,7 @@ import csv
 
 def precio_cajon(fruta, existe_fruta =True):
     precio = None
-    with open('../Data/camion.csv','rt', encoding= 'utf-8') as archivo:
+    with open('Data/camion.csv','rt', encoding= 'utf-8') as archivo:
         camion_csv = csv.reader(archivo)
         for linea in camion_csv:
             if linea:

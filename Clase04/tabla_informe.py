@@ -1,7 +1,6 @@
 import csv
-from costo_camion import costo_camion
-from collections  import Counter
-#------------------------------------------------------ Ejercicio 4.8: Recolectar datos ------------------------
+
+
 
 def leer_camion(nombre_archivo):
     camion = []
@@ -10,7 +9,7 @@ def leer_camion(nombre_archivo):
         headers = next(rows)
 
         for n_row, row in enumerate(rows, start=1):
-            record = dict(zip(headers,row))
+            
             try:
                  Diccionario = {headers[0]:row[0],
                                 headers[1]:int(row[1]),
@@ -22,7 +21,7 @@ def leer_camion(nombre_archivo):
     return(camion)
 
 
-camion = leer_camion('Data/camion.csv')
+camion = leer_camion('../Data/camion.csv')
 
 
 
@@ -48,40 +47,71 @@ def leer_precios(nombre_archivo3):
 
 
 
+archivo_camion = '../Data/camion.csv'
+archivo_precios = '../Data/precios.csv'
 
- 
-def balance_del_camion(camion, precios):
+camion = leer_camion(archivo_camion)
+precio = leer_precios(archivo_precios)
+
+def balance_del_camion(camion, precio):
     costo_total = 0
     ventas = 0 
     for n_fila, diccionario in enumerate(camion, start=1):
         try:
             costo_total += diccionario['cajones'] * diccionario['precio']
             nombre_fruta = diccionario['nombre']
-            precio_fruta = precios[nombre_fruta]
+            precio_fruta = precio[nombre_fruta]
             ventas += diccionario['cajones'] * precio_fruta
-            
+            balance_total = ventas - costo_total 
         # Esto atrapa errores en los int() y float() de arriba.
         except ValueError:
-            print(f'Fila {n_fila}: No pude interpretar: {nombre_fruta}')
-    balance_total = ventas - costo_total 
-    print(balance_total)        
-    
+            print(f'Fila {n_fila}: No pude interpretar: {diccionario}')
+            
+    return balance_total     
 
-archivo_camion = 'Data/camion.csv'
-archivo_precios = 'Data/precios.csv'
-
-camion = leer_camion(archivo_camion)
-precio = leer_precios(archivo_precios)
-print(f'Balance del camion {balance_del_camion(camion, precio)}')
-
-
-
+balance = balance_del_camion(camion, precio)
 
 def hacer_informe(camion, precio):
-    for element in (camion, precio):
-        list(zip(camion, precio))
+    informe = []
+    for element in camion:
+        nombre  = element['nombre']
+        cajones = element['cajones']
+        precios = element['precio']
+        cambio = precios - precio[nombre]
+        informe.append((nombre, cajones, precios, cambio))
+    return informe
     
-print(hacer_informe(camion, precio))
+
+informe = hacer_informe(camion, precio)
+
+headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
+
+print(f'{headers[0]:>10} {headers[1]:>10} {headers[2]:>10} {headers[3]:>10}')
+print(f"{('-'*11+'')*len(headers)}")
+
+for nombre, cajones, precio, cambio in informe:
+        print(f'{nombre:>10s} {cajones:>10d} {"$" + str(precio):>10s} {cambio:>10.2f}')
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

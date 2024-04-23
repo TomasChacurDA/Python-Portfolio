@@ -8,7 +8,7 @@ import csv
 
 def buscar_precio(fruta, existe_fruta =True):
     precio = None
-    with open('../Data/precios.csv','rt', encoding= 'utf-8') as archivo:
+    with open('Data/precios.csv','rt', encoding= 'utf-8') as archivo:
         frutas_csv = csv.reader(archivo)
         for linea in frutas_csv:
             if linea:
