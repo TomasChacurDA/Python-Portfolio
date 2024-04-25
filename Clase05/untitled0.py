@@ -1,22 +1,71 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr 21 17:21:13 2024
+Created on Tue Apr 23 14:37:30 2024
 
 @author: Tomas
 """
+import csv
+from pprint import pprint
 
-def tiene_a(expresion):
-    n = len(expresion)
-    i = 0
-    while i<n:
-        if expresion[i] == 'a':
-            return True
-        else:
-            return False
-        i += 1
+#%%
+#                           Ejercicio 5.1: Debugger
 
-rta = tiene_a ('palabra')
-print(rta)
+def invertir_lista(lista):
+    '''Recibe una lista L y la develve invertida.'''
+    invertida = []
+    i = len(lista)
+    while i > 0:    # tomo el último elemento 
+        i = i-1
+        invertida.append (lista.pop(i))  #
+    return invertida
 
-# ¿Es correcto esto? ¿Donde está el error? ¿Cómo lo podemos resolver?
-    # El error es que el 'if' debe ser if expresion[i] tiene 'a' devolve true
+l = [1, 2, 3, 4, 5]    
+m = invertir_lista(l)
+print(f'Entrada {l}, Salida: {m}')
+
+
+
+#%%
+#                       Ejercicio 5.2: Más debugger
+
+def leer_camion(nombre_archivo):
+    camion = []
+    registro = {}
+    with open(nombre_archivo,"rt") as f:
+        filas = csv.reader(f)
+        encabezado = next(filas)
+        for fila in filas:
+            registro[encabezado[0]] = fila[0]
+            registro[encabezado[1]] = int(fila[1])
+            registro[encabezado[2]] = float(fila[2])
+            camion.append(registro)
+    return camion
+
+camion = leer_camion('../Data/camion.csv')
+pprint(camion)
+
+#%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
