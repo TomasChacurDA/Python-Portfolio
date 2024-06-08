@@ -1,1 +1,6 @@
-esta carpeta contiene subcarpetas ordenadas por clase y otra con los archivos de datos de toda la materia
+
+## `Python Portfolio`
+
+These are the exercises I completed during my `Programming 1` course at the `National University of San Martin` (Buenos Aires, Argentina).
+
+I hope this showcases my potential in Python.
