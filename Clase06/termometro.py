@@ -1,5 +1,3 @@
-
-
 import random
 
 def medir_temp(n):

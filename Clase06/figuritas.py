@@ -1,4 +1,3 @@
-
 import numpy as np
 import random
 # Ejercicio 6.13: Crear
@@ -38,7 +37,7 @@ def cuantas_figus(figus_total):
 
 comprar_figu(figus_total)
 
-#%%
+
 # Ejercicio 6.17
 
 figus_total = 6
@@ -59,7 +58,7 @@ print(promedio)
 
 
 
-#%%
+
 
 figus_total = 670
 n_repeticiones = 1000
@@ -75,7 +74,6 @@ for i in range(n_repeticiones):
 prom = compradas // n_repeticiones
 
 print(prom)
-#%%
 
 # Ejercicio 6.18
 

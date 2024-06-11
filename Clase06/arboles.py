@@ -77,8 +77,5 @@ scatter_hd(D)
 
 
 
-# Ejercicio 6.12: Scatterplot para diferentes especies
-
-
 
 
